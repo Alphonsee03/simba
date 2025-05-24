@@ -25,22 +25,17 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
+                    <a href="{{ route('mahasiswa.beasiswa.index') }}" class="sidebar-link">
                         <i class="bi bi-info-circle"></i><span>Informasi Beasiswa</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-pencil-square"></i><span>Ajukan Beasiswa</span>
+                    <a href="{{ route('mahasiswa.pendaftaran.status') }}" class="sidebar-link">
+                        <i class="bi bi-pencil-square"></i><span>Status pendaftaran</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-clock-history"></i><span>Riwayat Pendaftaran</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
+                    <a href="{{ route('mahasiswa.seleksi.status') }}" class="sidebar-link">
                         <i class="bi bi-graph-up"></i><span>Status Seleksi</span>
                     </a>
                 </li>

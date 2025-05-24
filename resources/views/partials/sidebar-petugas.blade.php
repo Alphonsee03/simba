@@ -14,13 +14,13 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-item active">
+                <li class="sidebar-item ">
                     <a href="" class="sidebar-link">
                         <i class="bi bi-grid-fill"></i><span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item active" >
-                    <a href="" class="sidebar-link">
+                <li class="sidebar-item ">
+                    <a href="{{ route('petugas.users.index') }}" class="sidebar-link">
                         <i class="bi bi-person-lines-fill"></i><span>Data Mahasiswa</span>
                     </a>
                 </li>
@@ -30,13 +30,13 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-award-fill"></i><span>Data Beasiswa</span>
+                    <a href="{{ route('petugas.seleksi.index') }}" class="sidebar-link">
+                        <i class="bi bi-people-fill"></i><span>Proses Seleksi</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-list-check"></i><span>Kriteria Penilaian</span>
+                <li class="sidebar-item" >
+                    <a href="{{ route('petugas.seleksi.hasil') }}" class="sidebar-link">
+                        <i class="bi bi-award-fill"></i><span>Data Beasiswa</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

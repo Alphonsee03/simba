@@ -14,6 +14,13 @@ class UserController extends Controller
         return view('content.admin.users.index', compact('users'));
     }
 
+    
+    public function indexPetugas()
+    {
+        $users = User::all(); // filter role, kalo ingat (-_-)
+        return view('content.petugas.users.index', compact('users'));
+    }
+
     public function create()
     {
         return view('content.admin.users.create');
@@ -45,6 +52,8 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'smester' => 'required|integer|min:1|max:14',
+            'prodi' => 'required|string|max:255',
             'role' => 'required|in:admin,petugas,mahasiswa',
             'password' => 'nullable|min:6|confirmed',
         ]);

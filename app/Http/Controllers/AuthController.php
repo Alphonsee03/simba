@@ -43,29 +43,33 @@ class AuthController extends Controller
 
     //untuk register
     public function submitregister(Request $request)
-{
-    
-    $request->merge(['role' => 'mahasiswa']);
-    $request->validate([
-        
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users',
-        'role' => 'required|in:admin,petugas,mahasiswa',
-        'password' => 'required|confirmed|min:6'
-    ]);
+    {
 
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'role' => $request->role,
-        'password' => bcrypt($request->password)
+        $request->merge(['role' => 'mahasiswa']);
+        $request->validate([
 
-    ]);
-    
-    
-    Auth::login($user);
-    return redirect()->route('mahasiswa.dashboard.index')->with('success', 'Berhasil Register');
-}
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'smester' => 'required|integer|min:1|max:14',
+            'prodi' => 'required|string|max:255',
+            'role' => 'required|in:admin,petugas,mahasiswa',
+            'password' => 'required|confirmed|min:6'
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'smester' => $request->smester,
+            'prodi' => $request->prodi,
+            'role' => $request->role,
+            'password' => bcrypt($request->password)
+
+        ]);
+
+
+        Auth::login($user);
+        return redirect()->route('mahasiswa.dashboard.index')->with('success', 'Berhasil Register');
+    }
 
     //Untuk Logout
     public function logout(): RedirectResponse

@@ -19,6 +19,16 @@
         </div>
 
         <div class="mb-3">
+            <label>Smester</label>
+            <input type="number" name="smester" class="form-control" value="{{ old('smester', $user->smester) }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Prodi</label>
+            <input type="text" name="prodi" class="form-control" value="{{ old('prodi', $user->prodi) }}" required>
+        </div>
+
+        <div class="mb-3">
             <label>Role</label>
             <select name="role" class="form-control" required>
                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
@@ -34,6 +44,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

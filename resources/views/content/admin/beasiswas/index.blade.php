@@ -12,9 +12,11 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Nama</th>
+                <th>NO</th>
+                <th>Nama Beasiswa</th>
                 <th>Tanggal Mulai</th>
-                <th>Tanggal Akhir</th>
+                <th>Tanggal Berakhir</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

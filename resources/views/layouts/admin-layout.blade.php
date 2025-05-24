@@ -10,6 +10,7 @@
             <div id="main-content">
                 <main class="container py-4">
                     @yield('content')
+                     
                 </main>
             </div>
         </div>

@@ -62,6 +62,6 @@ class BeasiswaController extends Controller
         $beasiswa = Beasiswa::findOrFail($id);
         $beasiswa->delete();
 
-        return redirect()->route('admin.beasiswa.index')->with('success', 'Data beasiswa berhasil dihapus.');
+        return redirect()->route('admin.beasiswas.index')->with('success', 'Data beasiswa berhasil dihapus.');
     }
 }

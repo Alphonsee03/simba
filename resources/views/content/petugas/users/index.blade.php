@@ -1,17 +1,11 @@
-@extends('layouts.admin-layout')
+@extends('layouts.petugas-layout')
 
 @section('content')
 <div class="page-heading">
-    <h3>Manajemen User Admin</h3>
+    <h3>Manajemen User Petugas</h3>
 </div>
 
-@if(session('success'))
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-@endif
 
-<a href="{{ route('admin.users.create') }}" class="btn btn-primary mb-3">Tambah User</a>
 <div class="page-content">
     <div class="card">
         <div class="card-header">
@@ -24,7 +18,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Aksi</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -33,15 +27,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ ucfirst($user->role) }}</td>
-                        <td>
-                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
-
-                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus user ini?')">Hapus</button>
-                            </form>
-                        </td>
+                
 
                     </tr>
                     @endforeach
