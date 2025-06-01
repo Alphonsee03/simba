@@ -15,7 +15,7 @@
 @foreach ($beasiswa as $item)
 <div class="card mb-3">
     <div class="card-body">
-        <h5>{{ $item->nama }}</h5>
+        <h3>{{ $item->nama }}</h3>
         <p>{{ $item->deskripsi }}</p>
         <form action="{{ route('mahasiswa.beasiswa.daftar', $item->id) }}" method="POST">
             @csrf

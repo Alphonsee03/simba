@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/learnmore', function () {
+    return view('learnmore');
+});
 
 
 
@@ -51,7 +54,7 @@ Route::middleware('auth:admin')->prefix('admin')->name('admin.')->group(function
 });
 
 Route::middleware('auth:petugas')->prefix('petugas')->name('petugas.')->group(function () {
-    Route::get('/home', [App\Http\Controllers\Petugas\DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/home', [\App\Http\Controllers\Petugas\DashboardController::class, 'index'])->name('dashboard.index');
         //menampilkan halalaman daftar users
     Route::get('/users', [UserController::class, 'indexPetugas'])->name('users.index');
         // menampilkan halaman pendaftaran, untuk di verifikasi
@@ -79,6 +82,10 @@ Route::middleware('auth:petugas')->prefix('petugas')->name('petugas.')->group(fu
 
 Route::middleware('auth:mahasiswa')->prefix('mahasiswa')->name('mahasiswa.')->group(function () {
     Route::get('/home', [App\Http\Controllers\Mahasiswa\DashboardController::class, 'index'])->name('dashboard.index');
+
+   
+    Route::get('/profile', [MahasiswaController::class, 'profile'])->name('profile');
+
 
     Route::get('beasiswa', [App\Http\Controllers\Mahasiswa\BeasiswaController::class, 'index'])->name('beasiswa.index');
     Route::post('beasiswa/{id}/daftar', [App\Http\Controllers\Mahasiswa\BeasiswaController::class, 'daftar'])->name('beasiswa.daftar');

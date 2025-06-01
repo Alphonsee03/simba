@@ -1347,22 +1347,254 @@ a {
 .chart-container-square {
     width: 100%;
     max-width: 350px;
-    height: 320px;
+    height: 350px;
     position: relative;
-}
-.chart-container {
-    width: 100%;
-    height: 280px; /* Atau 450px jika masih kecil */
-    position: relative;
-}
-.card-header {
-    background-color: rgb(19, 170, 225) !important;
 }
 
-  .bg-skyblue {
-      background-color: #ffffff !important; /* Sky blue color */
-      color: white;
-      border-radius: 30px;
-      display: inline-flex;
-      padding: 0.2rem 0.8rem;
+.chart-container {
+    width: 100%;
+    height: 350px;
+    position: relative;
+}
+h5 {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.card-header {
+    background-color: #5a5bdd !important;
+    max-height: 140px !important;
+    height: 50px !important;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.pendaftarChart {
+    width: 100% !important;
+    height: 100px !important;
+}
+
+.bg-skyblue {
+    background-color: #5a5bdd !important; /* Sky blue color */
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: left;
+    padding: 0.4rem 1rem;
+}
+.beasiswaPieChart {
+    width: 100% !important;
+    height: 350px !important;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Navbar Styles */
+nav {
+    width: 100%;
+    background-color: #5a5bdd;
+    box-shadow: 0 2px 6px rgba(100, 116, 139, 0.1);
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #ffffff; /* blue-purple */
+    letter-spacing: 2px;
+    user-select: none;
+}
+
+.user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    outline-offset: 2px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #5a5bdd;
+    transition: box-shadow 0.3s ease;
+    display: block;
+}
+
+.avatar-button:focus .avatar,
+.avatar-button:hover .avatar {
+    box-shadow: 0 0 10px 2px #5a5bdd;
+}
+
+/* Dropdown Menu */
+.dropdownn {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(90, 91, 221, 0.3);
+    min-width: 140px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1500;
+}
+
+.dropdownn.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.dropdownn a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: #5a5bdd;
+    text-decoration: none;
+    transition: background-color 0.22s ease;
+    user-select: none;
+}
+
+.dropdownn a:hover,
+.dropdownn a:focus {
+    background-color: #ddfef8;
+    outline: none;
+}
+
+
+
+/* Content container with rounded pill shape */
+.containerr {
+    display: flex;
+    flex-direction: row;
+    max-width: 1100px;
+    width: 100%;
+    min-height: 590px;
+    height: 100%;
+    background: #f9fcfc;
+    border-radius: 40px; 
+    border: solid 1px #5a5bdd;
+    box-shadow: 0 12px 48px 0 rgba(91, 91, 177, 0.15);
+    color: #222;
+    overflow: hidden;
+}
+
+.contentt {
+    flex: 1;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.4rem;
+}
+
+.contentt h1,h2 {
+    font-size: rem;
+    font-weight: 900;
+    line-height: 1.8;
+    color: #5a5bdd;
+}
+
+.contentt p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #666e85;
+    max-width: 480px;
+}
+
+.btn-groupp {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.2rem;
+}
+
+.btn-primaryy,
+.btn-secondaryy {
+    padding: 1rem 2.4rem;
+    border-radius: 80px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(90, 91, 221, 0.3);
+    user-select: none;
+}
+
+.btn-primaryy {
+    background: #5a5bdd; /* Blue background for Get Started button */
+
+}
+
+.btn-primaryy:hover,
+.btn-primaryy:focus {
+    background: #ffffff; /* Darker blue on hover */
+    color: #454bcd;
+    box-shadow: 0 8px 24px rgba(69, 75, 203, 0.6);
+    opacity: 80%;
+    outline: none;
+}
+
+.btn-secondaryy {
+    background: white; /* White background */
+    color: #5a5bdd !important; /* White text */
+    border: 2px solid #5a5bdd; /* Blue border */
+    
+}
+
+.btn-secondaryy:hover,
+.btn-secondaryy:focus {
+    background: #5a5bdd; /* Darker blue on hover */
+    color: white !important; /* White text on hover */
+    box-shadow: 0 8px 24px rgba(69, 75, 203, 0.6);
+    opacity: 80%;
+    outline: none;
+}
+
+
+.image-section {
+    flex: 1;
+    max-height: 600px;
+    max-width: 490px;
+    background: url("/assets/images/logo/lionking.jpg") center center/cover no-repeat;
+    background-size: cover;
+}
+
+
+@media (max-width: 950px) {
+    .containerr {
+        flex-direction: column;
+        border-radius: 60px 60px 0 0;
+        box-shadow: 0 8px 32px rgba(91, 91, 177, 0.1);
     }
+
+    .image-section {
+        height: 280px;
+    }
+}

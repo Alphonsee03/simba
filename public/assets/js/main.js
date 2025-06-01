@@ -76,99 +76,181 @@ for (var i = 0; i < sidebarItems.length; i++) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // === CHART 1: Pie chart jumlah user ===
     const userPieChart = document.getElementById("userPieChart");
+    if (userPieChart) {
+        const adminCount = parseInt(userPieChart.dataset.admin);
+        const petugasCount = parseInt(userPieChart.dataset.petugas);
+        const mahasiswaCount = parseInt(userPieChart.dataset.mahasiswa);
+
+        new Chart(userPieChart, {
+            type: "pie",
+            data: {
+                labels: ["Admin", "Petugas", "Mahasiswa"],
+                datasets: [
+                    {
+                        data: [adminCount, petugasCount, mahasiswaCount],
+                        backgroundColor: ["#0d6efd", "#198754", "#ffc107"],
+                        hoverOffset: 28,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    animateScale: true,
+                    duration: 900,
+                },
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            font: { size: 14, weight: "bold" },
+                            color: "#333",
+                            padding: 16,
+                        },
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.label}: ${context.raw} orang`;
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    }
+
+    // === CHART 2: Pie chart jumlah pendaftar per beasiswa ===
+    const beasiswaPieChart = document.getElementById("beasiswaPieChart");
+    if (beasiswaPieChart) {
+        const labels = JSON.parse(beasiswaPieChart.dataset.labels);
+        const values = JSON.parse(beasiswaPieChart.dataset.values);
+
+        new Chart(beasiswaPieChart, {
+            type: "pie",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        data: values,
+                        backgroundColor: [
+                            "#0d6efd",
+                            "#198754",
+                            "#dc3545",
+                            "#ffc107",
+                            "#6610f2",
+                            "#20c997",
+                            "#fd7e14",
+                        ],
+                        hoverOffset: 22,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                animation: {
+                    animateScale: true,
+                    duration: 900,
+                },
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            font: { size: 12, weight: "bold" },
+                            color: "#333",
+                            padding: 4,
+                        },
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `${context.label}: ${context.raw} pendaftar`;
+                            },
+                        },
+                    },
+                },
+            },
+        });
+    }
+
     const pendaftarChart = document.getElementById("pendaftarChart");
+    if (pendaftarChart) {
+        const totalPendaftar = parseInt(pendaftarChart.dataset.total);
+        const totalDiterima = parseInt(pendaftarChart.dataset.diterima);
 
-    const adminCount = parseInt(userPieChart.dataset.admin);
-    const petugasCount = parseInt(userPieChart.dataset.petugas);
-    const mahasiswaCount = parseInt(userPieChart.dataset.mahasiswa);
-
-    new Chart(userPieChart, {
-        type: "pie",
-        data: {
-            labels: ["Admin", "Petugas", "Mahasiswa"],
-            datasets: [
-                {
-                    data: [adminCount, petugasCount, mahasiswaCount],
-                    backgroundColor: ["#0d6efd", "#198754", "#0dcaf0"],
-                    hoverOffset: 28,
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            width: 400, // Mengubah lebar pie chart
-            height: 400, // Mengubah tinggi pie chart
-            animation: {
-                animateScale: true,
-                duration: 900,
+        new Chart(pendaftarChart, {
+            type: "doughnut", // Change the chart type to doughnut
+            data: {
+                labels: ["Total Pendaftar", "Total Diterima"],
+                datasets: [
+                    {
+                        label: "Jumlah",
+                        data: [totalPendaftar, totalDiterima],
+                        backgroundColor: ["#0d6efd", "#198754"],
+                        borderWidth: 2, // Optional: Add border width
+                    },
+                ],
             },
-            plugins: {
-                legend: {
-                    position: "bottom",
-                    align: "center", // Tambahkan ini
-                    labels: {
-                        font: { size: 14, weight: "bold" },
-                        color: "#f8f9fa",
-                        padding: 16,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 900,
+                    easing: "easeOutQuart",
+                },
+                plugins: {
+                    legend: {
+                        display: true, // Show legend
+                        position: "bottom", // Position of the legend
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return (
+                                    tooltipItem.label +
+                                    "   : " +
+                                    tooltipItem.raw
+                                ); // Show value in tooltip
+                            },
+                        },
                     },
                 },
             },
-        },
-    });
+        });
+    }
+});
 
-    const totalPendaftar = parseInt(pendaftarChart.dataset.total);
-    const totalDiterima = parseInt(pendaftarChart.dataset.diterima);
+const avatarButton = document.getElementById("avatarButton");
+const dropdown = document.getElementById("user-dropdown");
 
- 
-    new Chart(pendaftarChart, {
-        type: "bar", // Tipe masih bar tetapi dengan orientasi kolom
-        data: {
-            labels: ["Total Pendaftar", "Diterima"],
-            datasets: [
-                {
-                    data: [totalPendaftar, totalDiterima],
-                    backgroundColor: ["#0d6efd", "#198754"],
-                    borderRadius: 5,
-                    maxBarThickness: 300, // Memperbesar ketebalan bar
-                    barPercentage: 1, // Memperbesar proporsi lebar bar
-                    categoryPercentage: 0.8, // Memperbesar kategori
-                },
-            ],
-        },
-        options: {
-            indexAxis: "y", // Menyeting agar menjadi orientasi kolom
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: {
-                duration: 900,
-                easing: "easeOutQuart",
-            },
-            scales: {
-                x: {
-                    // Mempersiapkan skala X untuk orientasi kolom
-                    beginAtZero: true,
-                    ticks: { stepSize: 1 },
-                    grid: { color: "#3a3f56" },
-                },
-                y: {
-                    // Mempersiapkan skala Y untuk label
-                    grid: { display: false },
-                    ticks: {
-                        font: { weight: "bold" },
-                        color: "#f8f9fa",
-                    },
-                },
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    enabled: true,
-                    mode: "index",
-                    intersect: false,
-                },
-            },
-        },
-    });
+avatarButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", String(!expanded));
+    dropdown.classList.toggle("open");
+});
+
+// Close dropdown if clicking outside
+document.addEventListener("click", (event) => {
+    if (
+        !dropdown.contains(event.target) &&
+        !avatarButton.contains(event.target)
+    ) {
+        dropdown.classList.remove("open");
+        avatarButton.setAttribute("aria-expanded", "false");
+    }
+});
+
+// Accessibility: close dropdown with ESC
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        dropdown.classList.remove("open");
+        avatarButton.setAttribute("aria-expanded", "false");
+        avatarButton.focus();
+    }
 });

@@ -14,34 +14,34 @@ use Illuminate\Support\Facades\Auth;
 class MahasiswaController extends Controller
 {
     public function alternatifForm()
-{
-    $user = auth('mahasiswa')->user();
+    {
+        $user = auth('mahasiswa')->user();
 
-    // Ambil pendaftaran terbaru yang masih menunggu atau terverifikasi
-    $pendaftaran = Pendaftaran::where('user_id', $user->id)
-        ->whereIn('status', ['pending', 'terverifikasi'])
-        ->latest()
-        ->first();
-        
-    if (!$pendaftaran) {
-        return redirect()->route('mahasiswa.beasiswa.index')
-            ->with('error', 'Silakan daftar beasiswa terlebih dahulu.');
+        // Ambil pendaftaran terbaru yang masih menunggu atau terverifikasi
+        $pendaftaran = Pendaftaran::where('user_id', $user->id)
+            ->whereIn('status', ['pending', 'terverifikasi'])
+            ->latest()
+            ->first();
+
+        if (!$pendaftaran) {
+            return redirect()->route('mahasiswa.beasiswa.index')
+                ->with('error', 'Silakan daftar beasiswa terlebih dahulu.');
+        }
+
+        $beasiswaId = $pendaftaran->beasiswa_id;
+
+        $kriterias = Kriteria::where('beasiswa_id', $beasiswaId)->get();
+
+        $alternatifs = Alternatif::where('user_id', $user->id)
+            ->where('beasiswa_id', $beasiswaId)
+            ->get()
+            ->keyBy('kriteria_id');
+
+        // Cek apakah sudah mengisi semua kriteria
+
+
+        return view('content.mahasiswa.alternatif.form', compact('kriterias', 'alternatifs', 'beasiswaId'));
     }
-
-    $beasiswaId = $pendaftaran->beasiswa_id;
-
-    $kriterias = Kriteria::where('beasiswa_id', $beasiswaId)->get();
-
-    $alternatifs = Alternatif::where('user_id', $user->id)
-        ->where('beasiswa_id', $beasiswaId)
-        ->get()
-        ->keyBy('kriteria_id');
-
-    // Cek apakah sudah mengisi semua kriteria
-
-
-    return view('content.mahasiswa.alternatif.form', compact('kriterias', 'alternatifs', 'beasiswaId'));
-}
 
 
     public function alternatifStore(Request $request)
@@ -108,5 +108,17 @@ class MahasiswaController extends Controller
             'nilai_akhir' => $penilaian->nilai_akhir,
             'ranking' => $ranking
         ]);
+    }
+
+
+    public function profile()
+    {
+        $mahasiswa = auth('mahasiswa')->user(); 
+
+        $pendaftaran = Pendaftaran::with('beasiswa')
+            ->where('user_id', $mahasiswa->id)
+            ->get();
+
+        return view('content.mahasiswa.profile', compact('mahasiswa', 'pendaftaran'));
     }
 }
