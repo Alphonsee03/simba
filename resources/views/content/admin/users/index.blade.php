@@ -1,8 +1,8 @@
 @extends('layouts.admin-layout')
 
 @section('content')
-<div class="page-heading">
-    <h3>Manajemen User Admin</h3>
+<div class="page-heading card-body bg-skyblue">
+    <h3 class="text-white">Manajemen User Admin</h3>
 </div>
 
 @if(session('success'))
@@ -15,7 +15,7 @@
 <div class="page-content">
     <div class="card">
         <div class="card-header">
-            <h4>Daftar User</h4>
+            <h4 class="text-white">Daftar User</h4>
         </div>
         <div class="card-body">
             <table class="table table-striped">

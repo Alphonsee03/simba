@@ -8,34 +8,34 @@
 
     <div class="row mb-4 content-wrapper text-center">
         <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3">
+            <div class="card  bg-primary mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Total Pendaftar</h5>
-                    <p class="card-text h5">{{ $totalPendaftar }}</p>
+                    <p class="card-text text-white h5">{{ $totalPendaftar }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
+            <div class="card  bg-warning mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Pending</h5>
-                    <p class="card-text h5">{{ $totalPending }}</p>
+                    <p class="card-text text-white h5">{{ $totalPending }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
+            <div class="card  bg-success mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Diterima</h5>
-                    <p class="card-text h5">{{ $totalDiterima }}</p>
+                    <p class="card-text text-white h5">{{ $totalDiterima }}</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card text-white bg-danger mb-3">
+            <div class="card  bg-danger mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Ditolak</h5>
-                    <p class="card-text h5">{{ $totalDitolak }}</p>
+                    <p class="card-text text-white h5">{{ $totalDitolak }}</p>
                 </div>
             </div>
         </div>

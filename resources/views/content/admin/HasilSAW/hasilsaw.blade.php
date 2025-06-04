@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div class="mb-5 card-body bg-skyblue ">
-    <h1 class="mb-4">DAFTAR HASIL SELEKSI & RANGKING</h1>
+<div class="mb-5 card-body bg-skyblue mt-1 pt-1  mb-0">
+    <h1 class="mb-4 text-white ">DAFTAR HASIL SELEKSI & RANGKING</h1>
 </div>
 <div class="table-responsive shadow rounded" style="background-color: #ddfef8;">
 

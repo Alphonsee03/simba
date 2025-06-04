@@ -15,8 +15,8 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-house-fill"></i><span>Dashboard</span>
+                    <a href="{{ route('mahasiswa.dashboard.index') }}" class="sidebar-link">
+                        <i class="bi bi-house-fill"></i><span>Home</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

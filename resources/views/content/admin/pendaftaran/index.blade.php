@@ -1,8 +1,8 @@
 @extends('layouts.admin-layout')
 
 @section('content')
-<div class="mb-3 card-body bg-skyblue">
-    <h2>Riwayat Pendaftar Beasiswa</h2>
+<div class="mb-3  card-body bg-skyblue mt-2 mb-0">
+    <h2 class="text-white">Riwayat Pendaftar Beasiswa</h2>
 </div>
 
 <div class="card shadow mb-4" >
